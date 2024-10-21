@@ -1,8 +1,8 @@
-# Sportmonks Python API library
+# Enotec Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/sportmonks.svg)](https://pypi.org/project/sportmonks/)
 
-The Sportmonks Python library provides convenient access to the Sportmonks REST API from any Python 3.7+
+The Enotec Python library provides convenient access to the Enotec REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -28,9 +28,9 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from sportmonks import Sportmonks
+from sportmonks import Enotec
 
-client = Sportmonks(
+client = Enotec(
     # This is the default and can be omitted
     api_key=os.environ.get("API_KEY"),
 )
@@ -49,14 +49,14 @@ so that your API Key is not stored in source control.
 
 ## Async usage
 
-Simply import `AsyncSportmonks` instead of `Sportmonks` and use `await` with each API call:
+Simply import `AsyncEnotec` instead of `Enotec` and use `await` with each API call:
 
 ```python
 import os
 import asyncio
-from sportmonks import AsyncSportmonks
+from sportmonks import AsyncEnotec
 
-client = AsyncSportmonks(
+client = AsyncEnotec(
     # This is the default and can be omitted
     api_key=os.environ.get("API_KEY"),
 )
@@ -86,14 +86,14 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Pagination
 
-List methods in the Sportmonks API are paginated.
+List methods in the Enotec API are paginated.
 
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```python
-from sportmonks import Sportmonks
+from sportmonks import Enotec
 
-client = Sportmonks()
+client = Enotec()
 
 all_continents = []
 # Automatically fetches more pages as needed.
@@ -109,9 +109,9 @@ Or, asynchronously:
 
 ```python
 import asyncio
-from sportmonks import AsyncSportmonks
+from sportmonks import AsyncEnotec
 
-client = AsyncSportmonks()
+client = AsyncEnotec()
 
 
 async def main() -> None:
@@ -164,9 +164,9 @@ All errors inherit from `sportmonks.APIError`.
 
 ```python
 import sportmonks
-from sportmonks import Sportmonks
+from sportmonks import Enotec
 
-client = Sportmonks()
+client = Enotec()
 
 try:
     client.core.continents.retrieve(
@@ -206,10 +206,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from sportmonks import Sportmonks
+from sportmonks import Enotec
 
 # Configure the default for all requests:
-client = Sportmonks(
+client = Enotec(
     # default is 2
     max_retries=0,
 )
@@ -227,16 +227,16 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from sportmonks import Sportmonks
+from sportmonks import Enotec
 
 # Configure the default for all requests:
-client = Sportmonks(
+client = Enotec(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = Sportmonks(
+client = Enotec(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
@@ -257,10 +257,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `SPORTMONKS_LOG` to `debug`.
+You can enable logging by setting the environment variable `ENOTEC_LOG` to `debug`.
 
 ```shell
-$ export SPORTMONKS_LOG=debug
+$ export ENOTEC_LOG=debug
 ```
 
 ### How to tell whether `None` means `null` or missing
@@ -280,9 +280,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from sportmonks import Sportmonks
+from sportmonks import Enotec
 
-client = Sportmonks()
+client = Enotec()
 response = client.core.continents.with_raw_response.retrieve(
     continent_id="1",
     version="v3",
@@ -360,10 +360,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/clients/) functionality
 
 ```python
-from sportmonks import Sportmonks, DefaultHttpxClient
+from sportmonks import Enotec, DefaultHttpxClient
 
-client = Sportmonks(
-    # Or use the `SPORTMONKS_BASE_URL` env var
+client = Enotec(
+    # Or use the `ENOTEC_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxies="http://my.test.proxy.example.com",

@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from sportmonks import Sportmonks, AsyncSportmonks
+from sportmonks import Enotec, AsyncEnotec
 from tests.utils import assert_matches_type
 from sportmonks.pagination import SyncPaginatedAPICall, AsyncPaginatedAPICall
 from sportmonks.types.football import (
@@ -26,7 +26,7 @@ class TestFixtures:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_retrieve(self, client: Sportmonks) -> None:
+    def test_method_retrieve(self, client: Enotec) -> None:
         fixture = client.football.fixtures.retrieve(
             fixture_id="18528480",
             version="v3",
@@ -35,7 +35,7 @@ class TestFixtures:
         assert_matches_type(FixtureRetrieveResponse, fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: Sportmonks) -> None:
+    def test_raw_response_retrieve(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.retrieve(
             fixture_id="18528480",
             version="v3",
@@ -48,7 +48,7 @@ class TestFixtures:
         assert_matches_type(FixtureRetrieveResponse, fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: Sportmonks) -> None:
+    def test_streaming_response_retrieve(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.retrieve(
             fixture_id="18528480",
             version="v3",
@@ -63,7 +63,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_retrieve(self, client: Sportmonks) -> None:
+    def test_path_params_retrieve(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.retrieve(
                 fixture_id="18528480",
@@ -86,7 +86,7 @@ class TestFixtures:
             )
 
     @parametrize
-    def test_method_list(self, client: Sportmonks) -> None:
+    def test_method_list(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list(
             sport="football",
             version="v3",
@@ -94,7 +94,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_method_list_with_all_params(self, client: Sportmonks) -> None:
+    def test_method_list_with_all_params(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list(
             sport="football",
             version="v3",
@@ -105,7 +105,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_list(self, client: Sportmonks) -> None:
+    def test_raw_response_list(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.list(
             sport="football",
             version="v3",
@@ -117,7 +117,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_list(self, client: Sportmonks) -> None:
+    def test_streaming_response_list(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.list(
             sport="football",
             version="v3",
@@ -131,7 +131,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: Sportmonks) -> None:
+    def test_path_params_list(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.list(
                 sport="football",
@@ -145,7 +145,7 @@ class TestFixtures:
             )
 
     @parametrize
-    def test_method_head_to_head(self, client: Sportmonks) -> None:
+    def test_method_head_to_head(self, client: Enotec) -> None:
         fixture = client.football.fixtures.head_to_head(
             second_team="86",
             version="v3",
@@ -155,7 +155,7 @@ class TestFixtures:
         assert_matches_type(FixtureHeadToHeadResponse, fixture, path=["response"])
 
     @parametrize
-    def test_method_head_to_head_with_all_params(self, client: Sportmonks) -> None:
+    def test_method_head_to_head_with_all_params(self, client: Enotec) -> None:
         fixture = client.football.fixtures.head_to_head(
             second_team="86",
             version="v3",
@@ -168,7 +168,7 @@ class TestFixtures:
         assert_matches_type(FixtureHeadToHeadResponse, fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_head_to_head(self, client: Sportmonks) -> None:
+    def test_raw_response_head_to_head(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.head_to_head(
             second_team="86",
             version="v3",
@@ -182,7 +182,7 @@ class TestFixtures:
         assert_matches_type(FixtureHeadToHeadResponse, fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_head_to_head(self, client: Sportmonks) -> None:
+    def test_streaming_response_head_to_head(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.head_to_head(
             second_team="86",
             version="v3",
@@ -198,7 +198,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_head_to_head(self, client: Sportmonks) -> None:
+    def test_path_params_head_to_head(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.head_to_head(
                 second_team="86",
@@ -232,7 +232,7 @@ class TestFixtures:
             )
 
     @parametrize
-    def test_method_latest(self, client: Sportmonks) -> None:
+    def test_method_latest(self, client: Enotec) -> None:
         fixture = client.football.fixtures.latest(
             sport="football",
             version="v3",
@@ -240,7 +240,7 @@ class TestFixtures:
         assert_matches_type(FixtureLatestResponse, fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_latest(self, client: Sportmonks) -> None:
+    def test_raw_response_latest(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.latest(
             sport="football",
             version="v3",
@@ -252,7 +252,7 @@ class TestFixtures:
         assert_matches_type(FixtureLatestResponse, fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_latest(self, client: Sportmonks) -> None:
+    def test_streaming_response_latest(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.latest(
             sport="football",
             version="v3",
@@ -266,7 +266,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_latest(self, client: Sportmonks) -> None:
+    def test_path_params_latest(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.latest(
                 sport="football",
@@ -280,7 +280,7 @@ class TestFixtures:
             )
 
     @parametrize
-    def test_method_list_between_dates(self, client: Sportmonks) -> None:
+    def test_method_list_between_dates(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list_between_dates(
             end_date="2022-07-25",
             version="v3",
@@ -290,7 +290,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_method_list_between_dates_with_all_params(self, client: Sportmonks) -> None:
+    def test_method_list_between_dates_with_all_params(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list_between_dates(
             end_date="2022-07-25",
             version="v3",
@@ -303,7 +303,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_list_between_dates(self, client: Sportmonks) -> None:
+    def test_raw_response_list_between_dates(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.list_between_dates(
             end_date="2022-07-25",
             version="v3",
@@ -317,7 +317,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_between_dates(self, client: Sportmonks) -> None:
+    def test_streaming_response_list_between_dates(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.list_between_dates(
             end_date="2022-07-25",
             version="v3",
@@ -333,7 +333,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list_between_dates(self, client: Sportmonks) -> None:
+    def test_path_params_list_between_dates(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.list_between_dates(
                 end_date="2022-07-25",
@@ -367,7 +367,7 @@ class TestFixtures:
             )
 
     @parametrize
-    def test_method_list_between_dates_for_team(self, client: Sportmonks) -> None:
+    def test_method_list_between_dates_for_team(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list_between_dates_for_team(
             team_id="ut",
             version="v3",
@@ -378,7 +378,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_method_list_between_dates_for_team_with_all_params(self, client: Sportmonks) -> None:
+    def test_method_list_between_dates_for_team_with_all_params(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list_between_dates_for_team(
             team_id="ut",
             version="v3",
@@ -392,7 +392,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_list_between_dates_for_team(self, client: Sportmonks) -> None:
+    def test_raw_response_list_between_dates_for_team(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.list_between_dates_for_team(
             team_id="ut",
             version="v3",
@@ -407,7 +407,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_between_dates_for_team(self, client: Sportmonks) -> None:
+    def test_streaming_response_list_between_dates_for_team(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.list_between_dates_for_team(
             team_id="ut",
             version="v3",
@@ -424,7 +424,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list_between_dates_for_team(self, client: Sportmonks) -> None:
+    def test_path_params_list_between_dates_for_team(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.list_between_dates_for_team(
                 team_id="ut",
@@ -471,7 +471,7 @@ class TestFixtures:
             )
 
     @parametrize
-    def test_method_list_by_date(self, client: Sportmonks) -> None:
+    def test_method_list_by_date(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list_by_date(
             date="2022-07-24",
             version="v3",
@@ -480,7 +480,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_method_list_by_date_with_all_params(self, client: Sportmonks) -> None:
+    def test_method_list_by_date_with_all_params(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list_by_date(
             date="2022-07-24",
             version="v3",
@@ -492,7 +492,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_list_by_date(self, client: Sportmonks) -> None:
+    def test_raw_response_list_by_date(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.list_by_date(
             date="2022-07-24",
             version="v3",
@@ -505,7 +505,7 @@ class TestFixtures:
         assert_matches_type(SyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_by_date(self, client: Sportmonks) -> None:
+    def test_streaming_response_list_by_date(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.list_by_date(
             date="2022-07-24",
             version="v3",
@@ -520,7 +520,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list_by_date(self, client: Sportmonks) -> None:
+    def test_path_params_list_by_date(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.list_by_date(
                 date="2022-07-24",
@@ -543,7 +543,7 @@ class TestFixtures:
             )
 
     @parametrize
-    def test_method_list_by_ids(self, client: Sportmonks) -> None:
+    def test_method_list_by_ids(self, client: Enotec) -> None:
         fixture = client.football.fixtures.list_by_ids(
             fixture_ids="18528484%2C18531140",
             version="v3",
@@ -552,7 +552,7 @@ class TestFixtures:
         assert_matches_type(FixtureListByIDsResponse, fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_list_by_ids(self, client: Sportmonks) -> None:
+    def test_raw_response_list_by_ids(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.list_by_ids(
             fixture_ids="18528484%2C18531140",
             version="v3",
@@ -565,7 +565,7 @@ class TestFixtures:
         assert_matches_type(FixtureListByIDsResponse, fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_by_ids(self, client: Sportmonks) -> None:
+    def test_streaming_response_list_by_ids(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.list_by_ids(
             fixture_ids="18528484%2C18531140",
             version="v3",
@@ -580,7 +580,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list_by_ids(self, client: Sportmonks) -> None:
+    def test_path_params_list_by_ids(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.list_by_ids(
                 fixture_ids="18528484%2C18531140",
@@ -603,7 +603,7 @@ class TestFixtures:
             )
 
     @parametrize
-    def test_method_search(self, client: Sportmonks) -> None:
+    def test_method_search(self, client: Enotec) -> None:
         fixture = client.football.fixtures.search(
             name="havn",
             version="v3",
@@ -612,7 +612,7 @@ class TestFixtures:
         assert_matches_type(FixtureSearchResponse, fixture, path=["response"])
 
     @parametrize
-    def test_raw_response_search(self, client: Sportmonks) -> None:
+    def test_raw_response_search(self, client: Enotec) -> None:
         response = client.football.fixtures.with_raw_response.search(
             name="havn",
             version="v3",
@@ -625,7 +625,7 @@ class TestFixtures:
         assert_matches_type(FixtureSearchResponse, fixture, path=["response"])
 
     @parametrize
-    def test_streaming_response_search(self, client: Sportmonks) -> None:
+    def test_streaming_response_search(self, client: Enotec) -> None:
         with client.football.fixtures.with_streaming_response.search(
             name="havn",
             version="v3",
@@ -640,7 +640,7 @@ class TestFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_search(self, client: Sportmonks) -> None:
+    def test_path_params_search(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.fixtures.with_raw_response.search(
                 name="havn",
@@ -667,7 +667,7 @@ class TestAsyncFixtures:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_retrieve(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.retrieve(
             fixture_id="18528480",
             version="v3",
@@ -676,7 +676,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureRetrieveResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.retrieve(
             fixture_id="18528480",
             version="v3",
@@ -689,7 +689,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureRetrieveResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.retrieve(
             fixture_id="18528480",
             version="v3",
@@ -704,7 +704,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.retrieve(
                 fixture_id="18528480",
@@ -727,7 +727,7 @@ class TestAsyncFixtures:
             )
 
     @parametrize
-    async def test_method_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list(
             sport="football",
             version="v3",
@@ -735,7 +735,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list(
             sport="football",
             version="v3",
@@ -746,7 +746,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_list(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.list(
             sport="football",
             version="v3",
@@ -758,7 +758,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.list(
             sport="football",
             version="v3",
@@ -772,7 +772,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_list(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.list(
                 sport="football",
@@ -786,7 +786,7 @@ class TestAsyncFixtures:
             )
 
     @parametrize
-    async def test_method_head_to_head(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_head_to_head(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.head_to_head(
             second_team="86",
             version="v3",
@@ -796,7 +796,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureHeadToHeadResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_method_head_to_head_with_all_params(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_head_to_head_with_all_params(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.head_to_head(
             second_team="86",
             version="v3",
@@ -809,7 +809,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureHeadToHeadResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_head_to_head(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_head_to_head(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.head_to_head(
             second_team="86",
             version="v3",
@@ -823,7 +823,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureHeadToHeadResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_head_to_head(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_head_to_head(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.head_to_head(
             second_team="86",
             version="v3",
@@ -839,7 +839,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_head_to_head(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_head_to_head(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.head_to_head(
                 second_team="86",
@@ -873,7 +873,7 @@ class TestAsyncFixtures:
             )
 
     @parametrize
-    async def test_method_latest(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_latest(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.latest(
             sport="football",
             version="v3",
@@ -881,7 +881,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureLatestResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_latest(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_latest(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.latest(
             sport="football",
             version="v3",
@@ -893,7 +893,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureLatestResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_latest(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_latest(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.latest(
             sport="football",
             version="v3",
@@ -907,7 +907,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_latest(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_latest(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.latest(
                 sport="football",
@@ -921,7 +921,7 @@ class TestAsyncFixtures:
             )
 
     @parametrize
-    async def test_method_list_between_dates(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_between_dates(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list_between_dates(
             end_date="2022-07-25",
             version="v3",
@@ -931,7 +931,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_method_list_between_dates_with_all_params(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_between_dates_with_all_params(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list_between_dates(
             end_date="2022-07-25",
             version="v3",
@@ -944,7 +944,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_between_dates(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_list_between_dates(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.list_between_dates(
             end_date="2022-07-25",
             version="v3",
@@ -958,7 +958,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_between_dates(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_list_between_dates(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.list_between_dates(
             end_date="2022-07-25",
             version="v3",
@@ -974,7 +974,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_between_dates(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_list_between_dates(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.list_between_dates(
                 end_date="2022-07-25",
@@ -1008,7 +1008,7 @@ class TestAsyncFixtures:
             )
 
     @parametrize
-    async def test_method_list_between_dates_for_team(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_between_dates_for_team(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list_between_dates_for_team(
             team_id="ut",
             version="v3",
@@ -1019,7 +1019,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_method_list_between_dates_for_team_with_all_params(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_between_dates_for_team_with_all_params(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list_between_dates_for_team(
             team_id="ut",
             version="v3",
@@ -1033,7 +1033,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_between_dates_for_team(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_list_between_dates_for_team(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.list_between_dates_for_team(
             team_id="ut",
             version="v3",
@@ -1048,7 +1048,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_between_dates_for_team(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_list_between_dates_for_team(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.list_between_dates_for_team(
             team_id="ut",
             version="v3",
@@ -1065,7 +1065,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_between_dates_for_team(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_list_between_dates_for_team(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.list_between_dates_for_team(
                 team_id="ut",
@@ -1112,7 +1112,7 @@ class TestAsyncFixtures:
             )
 
     @parametrize
-    async def test_method_list_by_date(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_by_date(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list_by_date(
             date="2022-07-24",
             version="v3",
@@ -1121,7 +1121,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_method_list_by_date_with_all_params(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_by_date_with_all_params(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list_by_date(
             date="2022-07-24",
             version="v3",
@@ -1133,7 +1133,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_by_date(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_list_by_date(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.list_by_date(
             date="2022-07-24",
             version="v3",
@@ -1146,7 +1146,7 @@ class TestAsyncFixtures:
         assert_matches_type(AsyncPaginatedAPICall[Fixture], fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_by_date(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_list_by_date(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.list_by_date(
             date="2022-07-24",
             version="v3",
@@ -1161,7 +1161,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_by_date(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_list_by_date(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.list_by_date(
                 date="2022-07-24",
@@ -1184,7 +1184,7 @@ class TestAsyncFixtures:
             )
 
     @parametrize
-    async def test_method_list_by_ids(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_by_ids(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.list_by_ids(
             fixture_ids="18528484%2C18531140",
             version="v3",
@@ -1193,7 +1193,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureListByIDsResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_by_ids(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_list_by_ids(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.list_by_ids(
             fixture_ids="18528484%2C18531140",
             version="v3",
@@ -1206,7 +1206,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureListByIDsResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_by_ids(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_list_by_ids(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.list_by_ids(
             fixture_ids="18528484%2C18531140",
             version="v3",
@@ -1221,7 +1221,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_by_ids(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_list_by_ids(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.list_by_ids(
                 fixture_ids="18528484%2C18531140",
@@ -1244,7 +1244,7 @@ class TestAsyncFixtures:
             )
 
     @parametrize
-    async def test_method_search(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_search(self, async_client: AsyncEnotec) -> None:
         fixture = await async_client.football.fixtures.search(
             name="havn",
             version="v3",
@@ -1253,7 +1253,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureSearchResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_search(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.fixtures.with_raw_response.search(
             name="havn",
             version="v3",
@@ -1266,7 +1266,7 @@ class TestAsyncFixtures:
         assert_matches_type(FixtureSearchResponse, fixture, path=["response"])
 
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.fixtures.with_streaming_response.search(
             name="havn",
             version="v3",
@@ -1281,7 +1281,7 @@ class TestAsyncFixtures:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_search(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_search(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.fixtures.with_raw_response.search(
                 name="havn",
