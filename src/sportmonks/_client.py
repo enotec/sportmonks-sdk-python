@@ -47,6 +47,7 @@ __all__ = [
 
 class Sportmonks(SyncAPIClient):
     core: resources.CoreResource
+    football: resources.FootballResource
     with_raw_response: SportmonksWithRawResponse
     with_streaming_response: SportmonksWithStreamedResponse
 
@@ -105,6 +106,7 @@ class Sportmonks(SyncAPIClient):
         )
 
         self.core = resources.CoreResource(self)
+        self.football = resources.FootballResource(self)
         self.with_raw_response = SportmonksWithRawResponse(self)
         self.with_streaming_response = SportmonksWithStreamedResponse(self)
 
@@ -215,6 +217,7 @@ class Sportmonks(SyncAPIClient):
 
 class AsyncSportmonks(AsyncAPIClient):
     core: resources.AsyncCoreResource
+    football: resources.AsyncFootballResource
     with_raw_response: AsyncSportmonksWithRawResponse
     with_streaming_response: AsyncSportmonksWithStreamedResponse
 
@@ -273,6 +276,7 @@ class AsyncSportmonks(AsyncAPIClient):
         )
 
         self.core = resources.AsyncCoreResource(self)
+        self.football = resources.AsyncFootballResource(self)
         self.with_raw_response = AsyncSportmonksWithRawResponse(self)
         self.with_streaming_response = AsyncSportmonksWithStreamedResponse(self)
 
@@ -384,21 +388,25 @@ class AsyncSportmonks(AsyncAPIClient):
 class SportmonksWithRawResponse:
     def __init__(self, client: Sportmonks) -> None:
         self.core = resources.CoreResourceWithRawResponse(client.core)
+        self.football = resources.FootballResourceWithRawResponse(client.football)
 
 
 class AsyncSportmonksWithRawResponse:
     def __init__(self, client: AsyncSportmonks) -> None:
         self.core = resources.AsyncCoreResourceWithRawResponse(client.core)
+        self.football = resources.AsyncFootballResourceWithRawResponse(client.football)
 
 
 class SportmonksWithStreamedResponse:
     def __init__(self, client: Sportmonks) -> None:
         self.core = resources.CoreResourceWithStreamingResponse(client.core)
+        self.football = resources.FootballResourceWithStreamingResponse(client.football)
 
 
 class AsyncSportmonksWithStreamedResponse:
     def __init__(self, client: AsyncSportmonks) -> None:
         self.core = resources.AsyncCoreResourceWithStreamingResponse(client.core)
+        self.football = resources.AsyncFootballResourceWithStreamingResponse(client.football)
 
 
 Client = Sportmonks

@@ -8,6 +8,14 @@ from .core import (
     CoreResourceWithStreamingResponse,
     AsyncCoreResourceWithStreamingResponse,
 )
+from .football import (
+    FootballResource,
+    AsyncFootballResource,
+    FootballResourceWithRawResponse,
+    AsyncFootballResourceWithRawResponse,
+    FootballResourceWithStreamingResponse,
+    AsyncFootballResourceWithStreamingResponse,
+)
 
 __all__ = [
     "CoreResource",
@@ -16,4 +24,10 @@ __all__ = [
     "AsyncCoreResourceWithRawResponse",
     "CoreResourceWithStreamingResponse",
     "AsyncCoreResourceWithStreamingResponse",
+    "FootballResource",
+    "AsyncFootballResource",
+    "FootballResourceWithRawResponse",
+    "AsyncFootballResourceWithRawResponse",
+    "FootballResourceWithStreamingResponse",
+    "AsyncFootballResourceWithStreamingResponse",
 ]
