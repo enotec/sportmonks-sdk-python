@@ -3,30 +3,20 @@
 from . import types
 from ._types import NOT_GIVEN, NoneType, NotGiven, Transport, ProxiesTypes
 from ._utils import file_from_path
-from ._client import (
-    Client,
-    Stream,
-    Timeout,
-    Transport,
-    Sportmonks,
-    AsyncClient,
-    AsyncStream,
-    RequestOptions,
-    AsyncSportmonks,
-)
+from ._client import Client, Enotec, Stream, Timeout, Transport, AsyncClient, AsyncEnotec, AsyncStream, RequestOptions
 from ._models import BaseModel
 from ._version import __title__, __version__
 from ._response import APIResponse as APIResponse, AsyncAPIResponse as AsyncAPIResponse
 from ._constants import DEFAULT_TIMEOUT, DEFAULT_MAX_RETRIES, DEFAULT_CONNECTION_LIMITS
 from ._exceptions import (
     APIError,
+    EnotecError,
     ConflictError,
     NotFoundError,
     APIStatusError,
     RateLimitError,
     APITimeoutError,
     BadRequestError,
-    SportmonksError,
     APIConnectionError,
     AuthenticationError,
     InternalServerError,
@@ -46,7 +36,7 @@ __all__ = [
     "ProxiesTypes",
     "NotGiven",
     "NOT_GIVEN",
-    "SportmonksError",
+    "EnotecError",
     "APIError",
     "APIStatusError",
     "APITimeoutError",
@@ -66,8 +56,8 @@ __all__ = [
     "AsyncClient",
     "Stream",
     "AsyncStream",
-    "Sportmonks",
-    "AsyncSportmonks",
+    "Enotec",
+    "AsyncEnotec",
     "file_from_path",
     "BaseModel",
     "DEFAULT_TIMEOUT",

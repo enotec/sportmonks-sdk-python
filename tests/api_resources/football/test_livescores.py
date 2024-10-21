@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from sportmonks import Sportmonks, AsyncSportmonks
+from sportmonks import Enotec, AsyncEnotec
 from tests.utils import assert_matches_type
 from sportmonks.types.football import LivescoreListResponse, LivescoreInplayResponse, LivescoreLatestResponse
 
@@ -18,7 +18,7 @@ class TestLivescores:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_list(self, client: Sportmonks) -> None:
+    def test_method_list(self, client: Enotec) -> None:
         livescore = client.football.livescores.list(
             sport="football",
             version="v3",
@@ -26,7 +26,7 @@ class TestLivescores:
         assert_matches_type(LivescoreListResponse, livescore, path=["response"])
 
     @parametrize
-    def test_raw_response_list(self, client: Sportmonks) -> None:
+    def test_raw_response_list(self, client: Enotec) -> None:
         response = client.football.livescores.with_raw_response.list(
             sport="football",
             version="v3",
@@ -38,7 +38,7 @@ class TestLivescores:
         assert_matches_type(LivescoreListResponse, livescore, path=["response"])
 
     @parametrize
-    def test_streaming_response_list(self, client: Sportmonks) -> None:
+    def test_streaming_response_list(self, client: Enotec) -> None:
         with client.football.livescores.with_streaming_response.list(
             sport="football",
             version="v3",
@@ -52,7 +52,7 @@ class TestLivescores:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: Sportmonks) -> None:
+    def test_path_params_list(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.livescores.with_raw_response.list(
                 sport="football",
@@ -66,7 +66,7 @@ class TestLivescores:
             )
 
     @parametrize
-    def test_method_inplay(self, client: Sportmonks) -> None:
+    def test_method_inplay(self, client: Enotec) -> None:
         livescore = client.football.livescores.inplay(
             sport="football",
             version="v3",
@@ -74,7 +74,7 @@ class TestLivescores:
         assert_matches_type(LivescoreInplayResponse, livescore, path=["response"])
 
     @parametrize
-    def test_raw_response_inplay(self, client: Sportmonks) -> None:
+    def test_raw_response_inplay(self, client: Enotec) -> None:
         response = client.football.livescores.with_raw_response.inplay(
             sport="football",
             version="v3",
@@ -86,7 +86,7 @@ class TestLivescores:
         assert_matches_type(LivescoreInplayResponse, livescore, path=["response"])
 
     @parametrize
-    def test_streaming_response_inplay(self, client: Sportmonks) -> None:
+    def test_streaming_response_inplay(self, client: Enotec) -> None:
         with client.football.livescores.with_streaming_response.inplay(
             sport="football",
             version="v3",
@@ -100,7 +100,7 @@ class TestLivescores:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_inplay(self, client: Sportmonks) -> None:
+    def test_path_params_inplay(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.livescores.with_raw_response.inplay(
                 sport="football",
@@ -114,7 +114,7 @@ class TestLivescores:
             )
 
     @parametrize
-    def test_method_latest(self, client: Sportmonks) -> None:
+    def test_method_latest(self, client: Enotec) -> None:
         livescore = client.football.livescores.latest(
             sport="football",
             version="v3",
@@ -122,7 +122,7 @@ class TestLivescores:
         assert_matches_type(LivescoreLatestResponse, livescore, path=["response"])
 
     @parametrize
-    def test_raw_response_latest(self, client: Sportmonks) -> None:
+    def test_raw_response_latest(self, client: Enotec) -> None:
         response = client.football.livescores.with_raw_response.latest(
             sport="football",
             version="v3",
@@ -134,7 +134,7 @@ class TestLivescores:
         assert_matches_type(LivescoreLatestResponse, livescore, path=["response"])
 
     @parametrize
-    def test_streaming_response_latest(self, client: Sportmonks) -> None:
+    def test_streaming_response_latest(self, client: Enotec) -> None:
         with client.football.livescores.with_streaming_response.latest(
             sport="football",
             version="v3",
@@ -148,7 +148,7 @@ class TestLivescores:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_latest(self, client: Sportmonks) -> None:
+    def test_path_params_latest(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.livescores.with_raw_response.latest(
                 sport="football",
@@ -166,7 +166,7 @@ class TestAsyncLivescores:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list(self, async_client: AsyncEnotec) -> None:
         livescore = await async_client.football.livescores.list(
             sport="football",
             version="v3",
@@ -174,7 +174,7 @@ class TestAsyncLivescores:
         assert_matches_type(LivescoreListResponse, livescore, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_list(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.livescores.with_raw_response.list(
             sport="football",
             version="v3",
@@ -186,7 +186,7 @@ class TestAsyncLivescores:
         assert_matches_type(LivescoreListResponse, livescore, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.livescores.with_streaming_response.list(
             sport="football",
             version="v3",
@@ -200,7 +200,7 @@ class TestAsyncLivescores:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_list(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.livescores.with_raw_response.list(
                 sport="football",
@@ -214,7 +214,7 @@ class TestAsyncLivescores:
             )
 
     @parametrize
-    async def test_method_inplay(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_inplay(self, async_client: AsyncEnotec) -> None:
         livescore = await async_client.football.livescores.inplay(
             sport="football",
             version="v3",
@@ -222,7 +222,7 @@ class TestAsyncLivescores:
         assert_matches_type(LivescoreInplayResponse, livescore, path=["response"])
 
     @parametrize
-    async def test_raw_response_inplay(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_inplay(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.livescores.with_raw_response.inplay(
             sport="football",
             version="v3",
@@ -234,7 +234,7 @@ class TestAsyncLivescores:
         assert_matches_type(LivescoreInplayResponse, livescore, path=["response"])
 
     @parametrize
-    async def test_streaming_response_inplay(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_inplay(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.livescores.with_streaming_response.inplay(
             sport="football",
             version="v3",
@@ -248,7 +248,7 @@ class TestAsyncLivescores:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_inplay(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_inplay(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.livescores.with_raw_response.inplay(
                 sport="football",
@@ -262,7 +262,7 @@ class TestAsyncLivescores:
             )
 
     @parametrize
-    async def test_method_latest(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_latest(self, async_client: AsyncEnotec) -> None:
         livescore = await async_client.football.livescores.latest(
             sport="football",
             version="v3",
@@ -270,7 +270,7 @@ class TestAsyncLivescores:
         assert_matches_type(LivescoreLatestResponse, livescore, path=["response"])
 
     @parametrize
-    async def test_raw_response_latest(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_latest(self, async_client: AsyncEnotec) -> None:
         response = await async_client.football.livescores.with_raw_response.latest(
             sport="football",
             version="v3",
@@ -282,7 +282,7 @@ class TestAsyncLivescores:
         assert_matches_type(LivescoreLatestResponse, livescore, path=["response"])
 
     @parametrize
-    async def test_streaming_response_latest(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_latest(self, async_client: AsyncEnotec) -> None:
         async with async_client.football.livescores.with_streaming_response.latest(
             sport="football",
             version="v3",
@@ -296,7 +296,7 @@ class TestAsyncLivescores:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_latest(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_latest(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.livescores.with_raw_response.latest(
                 sport="football",

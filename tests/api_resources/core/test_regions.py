@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from sportmonks import Sportmonks, AsyncSportmonks
+from sportmonks import Enotec, AsyncEnotec
 from tests.utils import assert_matches_type
 from sportmonks.pagination import SyncPaginatedAPICall, AsyncPaginatedAPICall
 from sportmonks.types.core import RegionListResponse, RegionSearchResponse, RegionRetrieveResponse
@@ -19,7 +19,7 @@ class TestRegions:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_retrieve(self, client: Sportmonks) -> None:
+    def test_method_retrieve(self, client: Enotec) -> None:
         region = client.core.regions.retrieve(
             region_id="367",
             version="v3",
@@ -27,7 +27,7 @@ class TestRegions:
         assert_matches_type(RegionRetrieveResponse, region, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: Sportmonks) -> None:
+    def test_raw_response_retrieve(self, client: Enotec) -> None:
         response = client.core.regions.with_raw_response.retrieve(
             region_id="367",
             version="v3",
@@ -39,7 +39,7 @@ class TestRegions:
         assert_matches_type(RegionRetrieveResponse, region, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: Sportmonks) -> None:
+    def test_streaming_response_retrieve(self, client: Enotec) -> None:
         with client.core.regions.with_streaming_response.retrieve(
             region_id="367",
             version="v3",
@@ -53,7 +53,7 @@ class TestRegions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_retrieve(self, client: Sportmonks) -> None:
+    def test_path_params_retrieve(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.core.regions.with_raw_response.retrieve(
                 region_id="367",
@@ -67,14 +67,14 @@ class TestRegions:
             )
 
     @parametrize
-    def test_method_list(self, client: Sportmonks) -> None:
+    def test_method_list(self, client: Enotec) -> None:
         region = client.core.regions.list(
             version="v3",
         )
         assert_matches_type(SyncPaginatedAPICall[RegionListResponse], region, path=["response"])
 
     @parametrize
-    def test_method_list_with_all_params(self, client: Sportmonks) -> None:
+    def test_method_list_with_all_params(self, client: Enotec) -> None:
         region = client.core.regions.list(
             version="v3",
             order="asc",
@@ -84,7 +84,7 @@ class TestRegions:
         assert_matches_type(SyncPaginatedAPICall[RegionListResponse], region, path=["response"])
 
     @parametrize
-    def test_raw_response_list(self, client: Sportmonks) -> None:
+    def test_raw_response_list(self, client: Enotec) -> None:
         response = client.core.regions.with_raw_response.list(
             version="v3",
         )
@@ -95,7 +95,7 @@ class TestRegions:
         assert_matches_type(SyncPaginatedAPICall[RegionListResponse], region, path=["response"])
 
     @parametrize
-    def test_streaming_response_list(self, client: Sportmonks) -> None:
+    def test_streaming_response_list(self, client: Enotec) -> None:
         with client.core.regions.with_streaming_response.list(
             version="v3",
         ) as response:
@@ -108,14 +108,14 @@ class TestRegions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: Sportmonks) -> None:
+    def test_path_params_list(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.core.regions.with_raw_response.list(
                 version="",
             )
 
     @parametrize
-    def test_method_search(self, client: Sportmonks) -> None:
+    def test_method_search(self, client: Enotec) -> None:
         region = client.core.regions.search(
             name="Br",
             version="v3",
@@ -123,7 +123,7 @@ class TestRegions:
         assert_matches_type(RegionSearchResponse, region, path=["response"])
 
     @parametrize
-    def test_raw_response_search(self, client: Sportmonks) -> None:
+    def test_raw_response_search(self, client: Enotec) -> None:
         response = client.core.regions.with_raw_response.search(
             name="Br",
             version="v3",
@@ -135,7 +135,7 @@ class TestRegions:
         assert_matches_type(RegionSearchResponse, region, path=["response"])
 
     @parametrize
-    def test_streaming_response_search(self, client: Sportmonks) -> None:
+    def test_streaming_response_search(self, client: Enotec) -> None:
         with client.core.regions.with_streaming_response.search(
             name="Br",
             version="v3",
@@ -149,7 +149,7 @@ class TestRegions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_search(self, client: Sportmonks) -> None:
+    def test_path_params_search(self, client: Enotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.core.regions.with_raw_response.search(
                 name="Br",
@@ -167,7 +167,7 @@ class TestAsyncRegions:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_retrieve(self, async_client: AsyncEnotec) -> None:
         region = await async_client.core.regions.retrieve(
             region_id="367",
             version="v3",
@@ -175,7 +175,7 @@ class TestAsyncRegions:
         assert_matches_type(RegionRetrieveResponse, region, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncEnotec) -> None:
         response = await async_client.core.regions.with_raw_response.retrieve(
             region_id="367",
             version="v3",
@@ -187,7 +187,7 @@ class TestAsyncRegions:
         assert_matches_type(RegionRetrieveResponse, region, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncEnotec) -> None:
         async with async_client.core.regions.with_streaming_response.retrieve(
             region_id="367",
             version="v3",
@@ -201,7 +201,7 @@ class TestAsyncRegions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.core.regions.with_raw_response.retrieve(
                 region_id="367",
@@ -215,14 +215,14 @@ class TestAsyncRegions:
             )
 
     @parametrize
-    async def test_method_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list(self, async_client: AsyncEnotec) -> None:
         region = await async_client.core.regions.list(
             version="v3",
         )
         assert_matches_type(AsyncPaginatedAPICall[RegionListResponse], region, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncEnotec) -> None:
         region = await async_client.core.regions.list(
             version="v3",
             order="asc",
@@ -232,7 +232,7 @@ class TestAsyncRegions:
         assert_matches_type(AsyncPaginatedAPICall[RegionListResponse], region, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_list(self, async_client: AsyncEnotec) -> None:
         response = await async_client.core.regions.with_raw_response.list(
             version="v3",
         )
@@ -243,7 +243,7 @@ class TestAsyncRegions:
         assert_matches_type(AsyncPaginatedAPICall[RegionListResponse], region, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncEnotec) -> None:
         async with async_client.core.regions.with_streaming_response.list(
             version="v3",
         ) as response:
@@ -256,14 +256,14 @@ class TestAsyncRegions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_list(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.core.regions.with_raw_response.list(
                 version="",
             )
 
     @parametrize
-    async def test_method_search(self, async_client: AsyncSportmonks) -> None:
+    async def test_method_search(self, async_client: AsyncEnotec) -> None:
         region = await async_client.core.regions.search(
             name="Br",
             version="v3",
@@ -271,7 +271,7 @@ class TestAsyncRegions:
         assert_matches_type(RegionSearchResponse, region, path=["response"])
 
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncSportmonks) -> None:
+    async def test_raw_response_search(self, async_client: AsyncEnotec) -> None:
         response = await async_client.core.regions.with_raw_response.search(
             name="Br",
             version="v3",
@@ -283,7 +283,7 @@ class TestAsyncRegions:
         assert_matches_type(RegionSearchResponse, region, path=["response"])
 
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncSportmonks) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncEnotec) -> None:
         async with async_client.core.regions.with_streaming_response.search(
             name="Br",
             version="v3",
@@ -297,7 +297,7 @@ class TestAsyncRegions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_search(self, async_client: AsyncSportmonks) -> None:
+    async def test_path_params_search(self, async_client: AsyncEnotec) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.core.regions.with_raw_response.search(
                 name="Br",
