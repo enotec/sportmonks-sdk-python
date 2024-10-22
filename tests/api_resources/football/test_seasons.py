@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from sportmonks import Enotec, AsyncEnotec
+from sportmonks import Sportmonks, AsyncSportmonks
 from tests.utils import assert_matches_type
 from sportmonks.pagination import SyncPaginatedAPICall, AsyncPaginatedAPICall
 from sportmonks.types.football import (
@@ -24,7 +24,7 @@ class TestSeasons:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_retrieve(self, client: Enotec) -> None:
+    def test_method_retrieve(self, client: Sportmonks) -> None:
         season = client.football.seasons.retrieve(
             season_id="19686",
             version="v3",
@@ -33,7 +33,7 @@ class TestSeasons:
         assert_matches_type(SeasonRetrieveResponse, season, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: Enotec) -> None:
+    def test_raw_response_retrieve(self, client: Sportmonks) -> None:
         response = client.football.seasons.with_raw_response.retrieve(
             season_id="19686",
             version="v3",
@@ -46,7 +46,7 @@ class TestSeasons:
         assert_matches_type(SeasonRetrieveResponse, season, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: Enotec) -> None:
+    def test_streaming_response_retrieve(self, client: Sportmonks) -> None:
         with client.football.seasons.with_streaming_response.retrieve(
             season_id="19686",
             version="v3",
@@ -61,7 +61,7 @@ class TestSeasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_retrieve(self, client: Enotec) -> None:
+    def test_path_params_retrieve(self, client: Sportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.seasons.with_raw_response.retrieve(
                 season_id="19686",
@@ -84,7 +84,7 @@ class TestSeasons:
             )
 
     @parametrize
-    def test_method_list(self, client: Enotec) -> None:
+    def test_method_list(self, client: Sportmonks) -> None:
         season = client.football.seasons.list(
             sport="football",
             version="v3",
@@ -92,7 +92,7 @@ class TestSeasons:
         assert_matches_type(SyncPaginatedAPICall[Season], season, path=["response"])
 
     @parametrize
-    def test_method_list_with_all_params(self, client: Enotec) -> None:
+    def test_method_list_with_all_params(self, client: Sportmonks) -> None:
         season = client.football.seasons.list(
             sport="football",
             version="v3",
@@ -103,7 +103,7 @@ class TestSeasons:
         assert_matches_type(SyncPaginatedAPICall[Season], season, path=["response"])
 
     @parametrize
-    def test_raw_response_list(self, client: Enotec) -> None:
+    def test_raw_response_list(self, client: Sportmonks) -> None:
         response = client.football.seasons.with_raw_response.list(
             sport="football",
             version="v3",
@@ -115,7 +115,7 @@ class TestSeasons:
         assert_matches_type(SyncPaginatedAPICall[Season], season, path=["response"])
 
     @parametrize
-    def test_streaming_response_list(self, client: Enotec) -> None:
+    def test_streaming_response_list(self, client: Sportmonks) -> None:
         with client.football.seasons.with_streaming_response.list(
             sport="football",
             version="v3",
@@ -129,7 +129,7 @@ class TestSeasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: Enotec) -> None:
+    def test_path_params_list(self, client: Sportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.seasons.with_raw_response.list(
                 sport="football",
@@ -143,7 +143,7 @@ class TestSeasons:
             )
 
     @parametrize
-    def test_method_list_by_team(self, client: Enotec) -> None:
+    def test_method_list_by_team(self, client: Sportmonks) -> None:
         season = client.football.seasons.list_by_team(
             team_id="282",
             version="v3",
@@ -152,7 +152,7 @@ class TestSeasons:
         assert_matches_type(SeasonListByTeamResponse, season, path=["response"])
 
     @parametrize
-    def test_raw_response_list_by_team(self, client: Enotec) -> None:
+    def test_raw_response_list_by_team(self, client: Sportmonks) -> None:
         response = client.football.seasons.with_raw_response.list_by_team(
             team_id="282",
             version="v3",
@@ -165,7 +165,7 @@ class TestSeasons:
         assert_matches_type(SeasonListByTeamResponse, season, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_by_team(self, client: Enotec) -> None:
+    def test_streaming_response_list_by_team(self, client: Sportmonks) -> None:
         with client.football.seasons.with_streaming_response.list_by_team(
             team_id="282",
             version="v3",
@@ -180,7 +180,7 @@ class TestSeasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list_by_team(self, client: Enotec) -> None:
+    def test_path_params_list_by_team(self, client: Sportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.seasons.with_raw_response.list_by_team(
                 team_id="282",
@@ -203,7 +203,7 @@ class TestSeasons:
             )
 
     @parametrize
-    def test_method_search(self, client: Enotec) -> None:
+    def test_method_search(self, client: Sportmonks) -> None:
         season = client.football.seasons.search(
             name="2022",
             version="v3",
@@ -212,7 +212,7 @@ class TestSeasons:
         assert_matches_type(SeasonSearchResponse, season, path=["response"])
 
     @parametrize
-    def test_raw_response_search(self, client: Enotec) -> None:
+    def test_raw_response_search(self, client: Sportmonks) -> None:
         response = client.football.seasons.with_raw_response.search(
             name="2022",
             version="v3",
@@ -225,7 +225,7 @@ class TestSeasons:
         assert_matches_type(SeasonSearchResponse, season, path=["response"])
 
     @parametrize
-    def test_streaming_response_search(self, client: Enotec) -> None:
+    def test_streaming_response_search(self, client: Sportmonks) -> None:
         with client.football.seasons.with_streaming_response.search(
             name="2022",
             version="v3",
@@ -240,7 +240,7 @@ class TestSeasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_search(self, client: Enotec) -> None:
+    def test_path_params_search(self, client: Sportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.seasons.with_raw_response.search(
                 name="2022",
@@ -267,7 +267,7 @@ class TestAsyncSeasons:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncEnotec) -> None:
+    async def test_method_retrieve(self, async_client: AsyncSportmonks) -> None:
         season = await async_client.football.seasons.retrieve(
             season_id="19686",
             version="v3",
@@ -276,7 +276,7 @@ class TestAsyncSeasons:
         assert_matches_type(SeasonRetrieveResponse, season, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncEnotec) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncSportmonks) -> None:
         response = await async_client.football.seasons.with_raw_response.retrieve(
             season_id="19686",
             version="v3",
@@ -289,7 +289,7 @@ class TestAsyncSeasons:
         assert_matches_type(SeasonRetrieveResponse, season, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncEnotec) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncSportmonks) -> None:
         async with async_client.football.seasons.with_streaming_response.retrieve(
             season_id="19686",
             version="v3",
@@ -304,7 +304,7 @@ class TestAsyncSeasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, async_client: AsyncEnotec) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncSportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.seasons.with_raw_response.retrieve(
                 season_id="19686",
@@ -327,7 +327,7 @@ class TestAsyncSeasons:
             )
 
     @parametrize
-    async def test_method_list(self, async_client: AsyncEnotec) -> None:
+    async def test_method_list(self, async_client: AsyncSportmonks) -> None:
         season = await async_client.football.seasons.list(
             sport="football",
             version="v3",
@@ -335,7 +335,7 @@ class TestAsyncSeasons:
         assert_matches_type(AsyncPaginatedAPICall[Season], season, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncEnotec) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncSportmonks) -> None:
         season = await async_client.football.seasons.list(
             sport="football",
             version="v3",
@@ -346,7 +346,7 @@ class TestAsyncSeasons:
         assert_matches_type(AsyncPaginatedAPICall[Season], season, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncEnotec) -> None:
+    async def test_raw_response_list(self, async_client: AsyncSportmonks) -> None:
         response = await async_client.football.seasons.with_raw_response.list(
             sport="football",
             version="v3",
@@ -358,7 +358,7 @@ class TestAsyncSeasons:
         assert_matches_type(AsyncPaginatedAPICall[Season], season, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncEnotec) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncSportmonks) -> None:
         async with async_client.football.seasons.with_streaming_response.list(
             sport="football",
             version="v3",
@@ -372,7 +372,7 @@ class TestAsyncSeasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncEnotec) -> None:
+    async def test_path_params_list(self, async_client: AsyncSportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.seasons.with_raw_response.list(
                 sport="football",
@@ -386,7 +386,7 @@ class TestAsyncSeasons:
             )
 
     @parametrize
-    async def test_method_list_by_team(self, async_client: AsyncEnotec) -> None:
+    async def test_method_list_by_team(self, async_client: AsyncSportmonks) -> None:
         season = await async_client.football.seasons.list_by_team(
             team_id="282",
             version="v3",
@@ -395,7 +395,7 @@ class TestAsyncSeasons:
         assert_matches_type(SeasonListByTeamResponse, season, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_by_team(self, async_client: AsyncEnotec) -> None:
+    async def test_raw_response_list_by_team(self, async_client: AsyncSportmonks) -> None:
         response = await async_client.football.seasons.with_raw_response.list_by_team(
             team_id="282",
             version="v3",
@@ -408,7 +408,7 @@ class TestAsyncSeasons:
         assert_matches_type(SeasonListByTeamResponse, season, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_by_team(self, async_client: AsyncEnotec) -> None:
+    async def test_streaming_response_list_by_team(self, async_client: AsyncSportmonks) -> None:
         async with async_client.football.seasons.with_streaming_response.list_by_team(
             team_id="282",
             version="v3",
@@ -423,7 +423,7 @@ class TestAsyncSeasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_by_team(self, async_client: AsyncEnotec) -> None:
+    async def test_path_params_list_by_team(self, async_client: AsyncSportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.seasons.with_raw_response.list_by_team(
                 team_id="282",
@@ -446,7 +446,7 @@ class TestAsyncSeasons:
             )
 
     @parametrize
-    async def test_method_search(self, async_client: AsyncEnotec) -> None:
+    async def test_method_search(self, async_client: AsyncSportmonks) -> None:
         season = await async_client.football.seasons.search(
             name="2022",
             version="v3",
@@ -455,7 +455,7 @@ class TestAsyncSeasons:
         assert_matches_type(SeasonSearchResponse, season, path=["response"])
 
     @parametrize
-    async def test_raw_response_search(self, async_client: AsyncEnotec) -> None:
+    async def test_raw_response_search(self, async_client: AsyncSportmonks) -> None:
         response = await async_client.football.seasons.with_raw_response.search(
             name="2022",
             version="v3",
@@ -468,7 +468,7 @@ class TestAsyncSeasons:
         assert_matches_type(SeasonSearchResponse, season, path=["response"])
 
     @parametrize
-    async def test_streaming_response_search(self, async_client: AsyncEnotec) -> None:
+    async def test_streaming_response_search(self, async_client: AsyncSportmonks) -> None:
         async with async_client.football.seasons.with_streaming_response.search(
             name="2022",
             version="v3",
@@ -483,7 +483,7 @@ class TestAsyncSeasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_search(self, async_client: AsyncEnotec) -> None:
+    async def test_path_params_search(self, async_client: AsyncSportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.seasons.with_raw_response.search(
                 name="2022",
