@@ -1,11 +1,11 @@
 [project]
 name = "enotec-sportmonks"
 version = "2.1.0"
-description = "The official Python library for the enotec API"
+description = "The official Python library for the sportmonks API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Enotec", email = "dev-feedback@sportmonks.com" },
+{ name = "Sportmonks", email = "dev-feedback@sportmonks.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",

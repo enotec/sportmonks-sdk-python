@@ -16,9 +16,9 @@ before making any information public.
 ## Reporting Non-SDK Related Security Issues
 
 If you encounter security issues that are not directly related to SDKs but pertain to the services
-or products provided by Enotec please follow the respective company's security reporting guidelines.
+or products provided by Sportmonks please follow the respective company's security reporting guidelines.
 
-### Enotec Terms and Policies
+### Sportmonks Terms and Policies
 
 Please contact dev-feedback@sportmonks.com for any questions or concerns regarding security of our services.
 
