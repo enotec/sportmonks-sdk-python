@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import EnotecError, APIStatusError
+from ._exceptions import APIStatusError, SportmonksError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -38,18 +38,18 @@ __all__ = [
     "ProxiesTypes",
     "RequestOptions",
     "resources",
-    "Enotec",
-    "AsyncEnotec",
+    "Sportmonks",
+    "AsyncSportmonks",
     "Client",
     "AsyncClient",
 ]
 
 
-class Enotec(SyncAPIClient):
+class Sportmonks(SyncAPIClient):
     core: resources.CoreResource
     football: resources.FootballResource
-    with_raw_response: EnotecWithRawResponse
-    with_streaming_response: EnotecWithStreamedResponse
+    with_raw_response: SportmonksWithRawResponse
+    with_streaming_response: SportmonksWithStreamedResponse
 
     # client options
     api_key: str
@@ -77,20 +77,20 @@ class Enotec(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous enotec client instance.
+        """Construct a new synchronous sportmonks client instance.
 
         This automatically infers the `api_key` argument from the `API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("API_KEY")
         if api_key is None:
-            raise EnotecError(
+            raise SportmonksError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("ENOTEC_BASE_URL")
+            base_url = os.environ.get("SPORTMONKS_BASE_URL")
         if base_url is None:
             base_url = f"https://api.sportmonks.com"
 
@@ -107,8 +107,8 @@ class Enotec(SyncAPIClient):
 
         self.core = resources.CoreResource(self)
         self.football = resources.FootballResource(self)
-        self.with_raw_response = EnotecWithRawResponse(self)
-        self.with_streaming_response = EnotecWithStreamedResponse(self)
+        self.with_raw_response = SportmonksWithRawResponse(self)
+        self.with_streaming_response = SportmonksWithStreamedResponse(self)
 
     @property
     @override
@@ -215,11 +215,11 @@ class Enotec(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncEnotec(AsyncAPIClient):
+class AsyncSportmonks(AsyncAPIClient):
     core: resources.AsyncCoreResource
     football: resources.AsyncFootballResource
-    with_raw_response: AsyncEnotecWithRawResponse
-    with_streaming_response: AsyncEnotecWithStreamedResponse
+    with_raw_response: AsyncSportmonksWithRawResponse
+    with_streaming_response: AsyncSportmonksWithStreamedResponse
 
     # client options
     api_key: str
@@ -247,20 +247,20 @@ class AsyncEnotec(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async enotec client instance.
+        """Construct a new async sportmonks client instance.
 
         This automatically infers the `api_key` argument from the `API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("API_KEY")
         if api_key is None:
-            raise EnotecError(
+            raise SportmonksError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("ENOTEC_BASE_URL")
+            base_url = os.environ.get("SPORTMONKS_BASE_URL")
         if base_url is None:
             base_url = f"https://api.sportmonks.com"
 
@@ -277,8 +277,8 @@ class AsyncEnotec(AsyncAPIClient):
 
         self.core = resources.AsyncCoreResource(self)
         self.football = resources.AsyncFootballResource(self)
-        self.with_raw_response = AsyncEnotecWithRawResponse(self)
-        self.with_streaming_response = AsyncEnotecWithStreamedResponse(self)
+        self.with_raw_response = AsyncSportmonksWithRawResponse(self)
+        self.with_streaming_response = AsyncSportmonksWithStreamedResponse(self)
 
     @property
     @override
@@ -385,30 +385,30 @@ class AsyncEnotec(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class EnotecWithRawResponse:
-    def __init__(self, client: Enotec) -> None:
+class SportmonksWithRawResponse:
+    def __init__(self, client: Sportmonks) -> None:
         self.core = resources.CoreResourceWithRawResponse(client.core)
         self.football = resources.FootballResourceWithRawResponse(client.football)
 
 
-class AsyncEnotecWithRawResponse:
-    def __init__(self, client: AsyncEnotec) -> None:
+class AsyncSportmonksWithRawResponse:
+    def __init__(self, client: AsyncSportmonks) -> None:
         self.core = resources.AsyncCoreResourceWithRawResponse(client.core)
         self.football = resources.AsyncFootballResourceWithRawResponse(client.football)
 
 
-class EnotecWithStreamedResponse:
-    def __init__(self, client: Enotec) -> None:
+class SportmonksWithStreamedResponse:
+    def __init__(self, client: Sportmonks) -> None:
         self.core = resources.CoreResourceWithStreamingResponse(client.core)
         self.football = resources.FootballResourceWithStreamingResponse(client.football)
 
 
-class AsyncEnotecWithStreamedResponse:
-    def __init__(self, client: AsyncEnotec) -> None:
+class AsyncSportmonksWithStreamedResponse:
+    def __init__(self, client: AsyncSportmonks) -> None:
         self.core = resources.AsyncCoreResourceWithStreamingResponse(client.core)
         self.football = resources.AsyncFootballResourceWithStreamingResponse(client.football)
 
 
-Client = Enotec
+Client = Sportmonks
 
-AsyncClient = AsyncEnotec
+AsyncClient = AsyncSportmonks

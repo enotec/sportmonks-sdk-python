@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from sportmonks import Enotec, AsyncEnotec
+from sportmonks import Sportmonks, AsyncSportmonks
 from tests.utils import assert_matches_type
 from sportmonks.types.football.standings import LiveListByLeagueResponse
 
@@ -18,7 +18,7 @@ class TestLive:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_list_by_league(self, client: Enotec) -> None:
+    def test_method_list_by_league(self, client: Sportmonks) -> None:
         live = client.football.standings.live.list_by_league(
             league_id="271",
             version="v3",
@@ -27,7 +27,7 @@ class TestLive:
         assert_matches_type(LiveListByLeagueResponse, live, path=["response"])
 
     @parametrize
-    def test_raw_response_list_by_league(self, client: Enotec) -> None:
+    def test_raw_response_list_by_league(self, client: Sportmonks) -> None:
         response = client.football.standings.live.with_raw_response.list_by_league(
             league_id="271",
             version="v3",
@@ -40,7 +40,7 @@ class TestLive:
         assert_matches_type(LiveListByLeagueResponse, live, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_by_league(self, client: Enotec) -> None:
+    def test_streaming_response_list_by_league(self, client: Sportmonks) -> None:
         with client.football.standings.live.with_streaming_response.list_by_league(
             league_id="271",
             version="v3",
@@ -55,7 +55,7 @@ class TestLive:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list_by_league(self, client: Enotec) -> None:
+    def test_path_params_list_by_league(self, client: Sportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             client.football.standings.live.with_raw_response.list_by_league(
                 league_id="271",
@@ -82,7 +82,7 @@ class TestAsyncLive:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_list_by_league(self, async_client: AsyncEnotec) -> None:
+    async def test_method_list_by_league(self, async_client: AsyncSportmonks) -> None:
         live = await async_client.football.standings.live.list_by_league(
             league_id="271",
             version="v3",
@@ -91,7 +91,7 @@ class TestAsyncLive:
         assert_matches_type(LiveListByLeagueResponse, live, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_by_league(self, async_client: AsyncEnotec) -> None:
+    async def test_raw_response_list_by_league(self, async_client: AsyncSportmonks) -> None:
         response = await async_client.football.standings.live.with_raw_response.list_by_league(
             league_id="271",
             version="v3",
@@ -104,7 +104,7 @@ class TestAsyncLive:
         assert_matches_type(LiveListByLeagueResponse, live, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_by_league(self, async_client: AsyncEnotec) -> None:
+    async def test_streaming_response_list_by_league(self, async_client: AsyncSportmonks) -> None:
         async with async_client.football.standings.live.with_streaming_response.list_by_league(
             league_id="271",
             version="v3",
@@ -119,7 +119,7 @@ class TestAsyncLive:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_by_league(self, async_client: AsyncEnotec) -> None:
+    async def test_path_params_list_by_league(self, async_client: AsyncSportmonks) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version` but received ''"):
             await async_client.football.standings.live.with_raw_response.list_by_league(
                 league_id="271",
