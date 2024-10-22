@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.0 (2024-10-22)
+
+Full Changelog: [v2.0.0...v2.1.0](https://github.com/enotec/sportmonks-sdk-python/compare/v2.0.0...v2.1.0)
+
+### Features
+
+* **api:** api update ([#5](https://github.com/enotec/sportmonks-sdk-python/issues/5)) ([5c4b7ec](https://github.com/enotec/sportmonks-sdk-python/commit/5c4b7ec74496368645f4afd6666535c2dfd549a2))
+
 ## 2.0.0 (2024-10-22)
 
 Full Changelog: [v0.0.1-alpha.0...v2.0.0](https://github.com/enotec/sportmonks-sdk-python/compare/v0.0.1-alpha.0...v2.0.0)
