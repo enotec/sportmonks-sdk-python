@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class EnotecError(Exception):
+class SportmonksError(Exception):
     pass
 
 
-class APIError(EnotecError):
+class APIError(SportmonksError):
     message: str
     request: httpx.Request
 
