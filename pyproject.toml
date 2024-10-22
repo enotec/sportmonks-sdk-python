@@ -1,5 +1,5 @@
 [project]
-name = "sportmonks"
+name = "enotec-sportmonks"
 version = "2.0.0"
 description = "The official Python library for the enotec API"
 dynamic = ["readme"]

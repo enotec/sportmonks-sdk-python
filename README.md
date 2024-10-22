@@ -1,6 +1,6 @@
 # Enotec Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/sportmonks.svg)](https://pypi.org/project/sportmonks/)
+[![PyPI version](https://img.shields.io/pypi/v/enotec-sportmonks.svg)](https://pypi.org/project/enotec-sportmonks/)
 
 The Enotec Python library provides convenient access to the Enotec REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.sportmonks.com](https://docs.sp
 
 ```sh
 # install from PyPI
-pip install sportmonks
+pip install enotec-sportmonks
 ```
 
 ## Usage
