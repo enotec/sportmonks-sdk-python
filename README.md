@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.sportmonks.com](https://docs.sp
 
 ```sh
 # install from PyPI
-pip install --pre sportmonks
+pip install sportmonks
 ```
 
 ## Usage
